@@ -13,6 +13,7 @@ $breakpoint-small : 520px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: none;
 }
 
 body {
@@ -25,4 +26,15 @@ body {
   li {
     list-style: none;
   }
+}
+
+@mixin line-clamp($number) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
