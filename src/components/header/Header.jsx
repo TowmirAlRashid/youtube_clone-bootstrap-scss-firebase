@@ -5,20 +5,27 @@ import { MdNotifications, MdApps } from 'react-icons/md'
 
 import './_header.scss'
 
-const Header = () => {
+const Header = ({ handleToggleSidebar }) => {
   return (
-    <div className='border border-dark header'>
-      <FaBars className='header__menu' size={28} />
+    <div className="border border-dark header">
+      <FaBars
+        className="header__menu"
+        size={28}
+        onClick={() => handleToggleSidebar()}
+        style={{
+          cursor: 'pointer',
+        }}
+      />
 
-      <img 
-        src='http://pngimg.com/uploads/youtube/youtube_PNG2.png'
-        alt='youtube logo'
-        className='header__logo'
+      <img
+        src="http://pngimg.com/uploads/youtube/youtube_PNG2.png"
+        alt="youtube logo"
+        className="header__logo"
       />
 
       <form>
-        <input type="text" placeholder='Search' />
-        <button type='submit'>
+        <input type="text" placeholder="Search" />
+        <button type="submit">
           <AiOutlineSearch size={22} />
         </button>
       </form>
@@ -26,13 +33,13 @@ const Header = () => {
       <div className="header__icons">
         <MdNotifications size={28} />
         <MdApps size={28} />
-        <img 
-          src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" 
-          alt="avatar-logo" 
+        <img
+          src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+          alt="avatar-logo"
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Header
