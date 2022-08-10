@@ -5,6 +5,7 @@ import Sidebar from './components/sidebar/Sidebar'
 import HomeScreen from './components/screens/HomeScreen/HomeScreen'
 
 import './_app.scss'
+import LoginScreen from './components/screens/loginScreen/LoginScreen'
 
 const App = () => {
   const [sidebar, toggleSidebar] = useState(false)
@@ -22,6 +23,7 @@ const App = () => {
         </Container>
       </div>
     </div>
+    // <LoginScreen />
   );
 }
 
