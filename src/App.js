@@ -39,7 +39,7 @@ const App = () => {
     if (!loading && accessToken === null) {
       navigate('/auth')
     }
-  }, [accessToken, loading])
+  }, [accessToken, loading, navigate])
   
   return (
       <Routes>

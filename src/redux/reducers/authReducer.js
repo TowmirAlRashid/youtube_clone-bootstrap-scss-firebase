@@ -1,4 +1,4 @@
-import { LOAD_PROFILE, LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS } from "../actionTypes"
+import { LOAD_PROFILE, LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS, LOG_OUT } from "../actionTypes"
 
 const initialState = {
   accessToken: sessionStorage.getItem("ytc-access-token")
@@ -39,6 +39,13 @@ export const authReducer = (prevState = initialState, action) => {
       return {
         ...prevState,
         user: payload
+      }
+
+    case LOG_OUT:
+      return {
+        ...prevState,
+        accessToken: null,
+        user: null
       }
 
     default:
