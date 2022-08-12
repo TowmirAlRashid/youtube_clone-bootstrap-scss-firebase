@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import Header from './components/header/Header'
 import Sidebar from './components/sidebar/Sidebar'
 import HomeScreen from './components/screens/HomeScreen/HomeScreen'
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import './_app.scss'
 import LoginScreen from './components/screens/loginScreen/LoginScreen'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Layout = ({children}) => {
   const [sidebar, toggleSidebar] = useState(false)
@@ -29,10 +31,17 @@ const Layout = ({children}) => {
 }
 
 const App = () => {
-  
+  const {accessToken, loading} = useSelector(state => state.auth)
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!loading && accessToken === null) {
+      navigate('/auth')
+    }
+  }, [accessToken, loading])
   
   return (
-    <Router>
       <Routes>
         <Route
           exact
@@ -65,7 +74,6 @@ const App = () => {
           }
         />
       </Routes>
-    </Router>
   );
 }
 
